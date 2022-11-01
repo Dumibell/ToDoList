@@ -1,4 +1,4 @@
-import { getAuth, signOut, updateProfile } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { dbService } from "../firebase";
@@ -61,10 +61,6 @@ export const Home = ({ userObj }) => {
       target: { value },
     } = event;
     setTodo(value);
-  };
-
-  const onPanelChange = (value, mode) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
   };
 
   return (

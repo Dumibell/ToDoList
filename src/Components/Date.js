@@ -9,10 +9,6 @@ export const Date = ({ date, setDate }) => {
     setDate((day) => day.add(1, "day"));
   };
 
-  const onPanelChange = (value, mode) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
-  };
-
   return (
     <>
       <div className="flex justify-between m-3 text-white">

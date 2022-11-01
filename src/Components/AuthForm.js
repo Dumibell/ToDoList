@@ -5,7 +5,6 @@ import { authService } from "../firebase";
 export const AuthForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const onChange = (event) => {
     const {
@@ -56,7 +55,6 @@ export const AuthForm = () => {
           value="Log In"
           className="bg-[#161F50] text-white mt-2 rounded-md h-8  shadow-sm hover:cursor-pointer"
         />
-        {error && <span>{error}</span>}
       </form>
     </div>
   );

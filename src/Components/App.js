@@ -2,7 +2,6 @@ import { AppRouter } from "./Router";
 import { useState, useEffect } from "react";
 import { authService } from "../firebase";
 import "./App.css";
-import { updateProfile } from "firebase/auth";
 
 function App() {
   const [init, setInit] = useState(false);

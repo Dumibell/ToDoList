@@ -7,8 +7,6 @@ export const DisplayName = ({ userObj, todo }) => {
   const [editing, setEditing] = useState(false);
   const [newName, setNewName] = useState(userObj.displayName);
 
-  // const TodoRef = doc(dbService, `${userObj.uid}`, `${todo.id}`);
-
   const onChangeEdit = (e) => {
     const {
       target: { value },
@@ -25,27 +23,6 @@ export const DisplayName = ({ userObj, todo }) => {
     });
     setEditing(false);
   };
-
-  // const showName = () => {
-  //   if (editing) {
-  //     return (
-  //       <form onSubmit={onSubmitEdit}>
-  //         <input
-  //           type="text"
-  //           value={newName}
-  //           className="w-12 outline-none animate-pulse"
-  //           onChange={onChangeEdit}
-  //         />
-  //       </form>
-  //     );
-  //   } else {
-  //     if (userObj.displayName) {
-  //       return <span>{newName}</span>;
-  //     } else {
-  //       return <span>익명</span>;
-  //     }
-  //   }
-  // };
 
   return (
     <>
