@@ -50,18 +50,6 @@ export const DisplayName = ({ userObj, todo, refreshUser }) => {
     <>
       <span className="font-bold flex" onClick={() => setEditing(true)}>
         <span className="mr-1">✏️</span>
-        {/* {editing ? (
-          <form onSubmit={onSubmitEdit}>
-            <input
-              type="text"
-              value={newName}
-              className="w-16 outline-none animate-pulse"
-              onChange={onChangeEdit}
-            />
-          </form>
-        ) : (
-          <span>{newName}</span>
-        )} */}
         {showName()}의 To Do List
       </span>
     </>

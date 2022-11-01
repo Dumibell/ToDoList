@@ -54,10 +54,7 @@ export const SignUpModal = ({ setModal }) => {
         className="absolute top-[5px] left-[270px] hover:cursor-pointer"
         onClick={() => setModal(false)}
       />
-      <form
-        onSubmit={SignUp}
-        className="flex flex-col m-2 p-3  border-[#161F50]"
-      >
+      <form onSubmit={SignUp} className="flex flex-col m-2 p-3">
         <input
           type="email"
           name="email"
