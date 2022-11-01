@@ -12,10 +12,6 @@ export const Todo = ({ todo, userObj, date }) => {
 
   const TodoRef = doc(dbService, `${userObj.uid}`, `${todo.id}`);
 
-  const toggleEditing = () => {
-    setEditing(true);
-  };
-
   const onDeleteClick = async () => {
     const ok = window.confirm("정말 이 todo를 삭제하시겠습니까?");
     if (ok) {
@@ -80,7 +76,7 @@ export const Todo = ({ todo, userObj, date }) => {
               <FontAwesomeIcon
                 icon={faPencilAlt}
                 className="mr-2 hover:cursor-pointer"
-                onClick={toggleEditing}
+                onClick={() => setEditing(!editing)}
               />
               <FontAwesomeIcon
                 icon={faDeleteLeft}

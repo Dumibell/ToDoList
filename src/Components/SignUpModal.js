@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { authService } from "../firebase";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { type } from "@testing-library/user-event/dist/type";
 
 export const SignUpModal = ({ setModal }) => {
   const [email, setEmail] = useState("");
@@ -26,10 +27,20 @@ export const SignUpModal = ({ setModal }) => {
   const SignUp = async (e) => {
     e.preventDefault();
     let data;
+    let passwordValid =
+      /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,20}$/;
     if (password === passwordConfirm) {
-      data = await createUserWithEmailAndPassword(authService, email, password);
-      alert("회원가입에 성공하였습니다!");
-      setModal(false);
+      if (passwordValid.test(password)) {
+        data = await createUserWithEmailAndPassword(
+          authService,
+          email,
+          password
+        );
+        alert("회원가입에 성공하였습니다!");
+        setModal(false);
+      } else {
+        alert("8~20자 영문 대소문자, 숫자, 특수문자를 사용하세요.");
+      }
     } else {
       alert("비밀번호를 확인해주세요.");
     }
