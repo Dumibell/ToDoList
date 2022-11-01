@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const SignUpModal = ({ setModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const onChange = (event) => {
     const {
@@ -16,20 +17,27 @@ export const SignUpModal = ({ setModal }) => {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
+    } else if (name === "password confirm") {
+      setPasswordConfirm(value);
     }
   };
-
+  console.log(password);
+  console.log(passwordConfirm);
   const SignUp = async (e) => {
     e.preventDefault();
     let data;
-    data = await createUserWithEmailAndPassword(authService, email, password);
-    alert("회원가입에 성공하였습니다!");
-    setModal(false);
+    if (password === passwordConfirm) {
+      data = await createUserWithEmailAndPassword(authService, email, password);
+      alert("회원가입에 성공하였습니다!");
+      setModal(false);
+    } else {
+      alert("비밀번호를 확인해주세요.");
+    }
     console.log(data);
   };
 
   return (
-    <div className="w-72 h-48 fixed bg-white flex flex-col justify-center">
+    <div className="w-72 h-60 fixed bg-white flex flex-col justify-center">
       <FontAwesomeIcon
         icon={faXmark}
         className="absolute top-[5px] left-[270px] hover:cursor-pointer"
@@ -58,9 +66,25 @@ export const SignUpModal = ({ setModal }) => {
           className="my-1 h-10 outline-none px-2 border"
         />
         <input
+          type="password"
+          name="password confirm"
+          placeholder="password confirm"
+          required
+          value={passwordConfirm}
+          onChange={onChange}
+          className="my-1 h-10 outline-none px-2 border"
+        />
+        {password !== passwordConfirm ? (
+          <p className="text-[11px] text-[red] absolute top-[162px]">
+            비밀번호가 일치하지 않습니다
+          </p>
+        ) : (
+          <></>
+        )}
+        <input
           type="submit"
           value="Sign Up"
-          className="bg-[#161F50] text-white rounded-md h-8  shadow-sm hover:cursor-pointer mt-4"
+          className="bg-[#161F50] text-white rounded-md h-8  shadow-sm hover:cursor-pointer mt-6"
         />
       </form>
     </div>
