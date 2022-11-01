@@ -9,11 +9,17 @@ export const Date = ({ date, setDate }) => {
     setDate((day) => day.add(1, "day"));
   };
 
+  const onPanelChange = (value, mode) => {
+    console.log(value.format("YYYY-MM-DD"), mode);
+  };
+
   return (
-    <div className="flex justify-between m-3 text-white">
-      <FontAwesomeIcon icon={faCaretLeft} onClick={goToPrevDate} size="2x" />
-      <div className="text-xl">{date.format("YYYY/MM/DD - ddd")}</div>
-      <FontAwesomeIcon icon={faCaretRight} onClick={goToNextDate} size="2x" />
-    </div>
+    <>
+      <div className="flex justify-between m-3 text-white">
+        <FontAwesomeIcon icon={faCaretLeft} onClick={goToPrevDate} size="2x" />
+        <div className="text-xl">{date.format("YYYY/MM/DD - ddd")}</div>
+        <FontAwesomeIcon icon={faCaretRight} onClick={goToNextDate} size="2x" />
+      </div>
+    </>
   );
 };

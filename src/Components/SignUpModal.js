@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { authService } from "../firebase";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const SignUpModal = ({ setModal }) => {
@@ -31,13 +31,13 @@ export const SignUpModal = ({ setModal }) => {
   return (
     <div className="w-72 h-48 fixed bg-white flex flex-col justify-center">
       <FontAwesomeIcon
-        icon={faCircleXmark}
-        className="absolute top-[-5px] left-[280px] hover:cursor-pointer"
+        icon={faXmark}
+        className="absolute top-[5px] left-[270px] hover:cursor-pointer"
         onClick={() => setModal(false)}
       />
       <form
         onSubmit={SignUp}
-        className="flex flex-col m-2 p-3 border border-[#161F50]"
+        className="flex flex-col m-2 p-3  border-[#161F50]"
       >
         <input
           type="email"

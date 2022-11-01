@@ -23,6 +23,7 @@ export const LogIn = () => {
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
+      <div className="text-3xl mb-3 font-loginTitle">To Do List</div>
       <div className="w-80 bg-[#364fc7] h-72 flex flex-col justify-center items-center">
         <div>
           <AuthForm />

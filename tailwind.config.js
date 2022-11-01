@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         GangwonEdu: ["GangwonEdu_OTFBoldA", "sans-serif"],
+        loginTitle: ["RixInooAriDuriR", "sans-serif"],
       },
     },
   },

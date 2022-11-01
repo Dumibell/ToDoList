@@ -1,22 +1,18 @@
 import { getAuth, signOut, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { dbService, storageService } from "../firebase";
+import { dbService } from "../firebase";
 import {
   collection,
-  getDocs,
   onSnapshot,
   query,
   orderBy,
-  doc,
   addDoc,
-  deleteDoc,
 } from "firebase/firestore";
 import { Todo } from "../Components/Todo";
 import { Date } from "../Components/Date";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
+import { DisplayName } from "../Components/DisplayName";
 
 export const Home = ({ userObj }) => {
   let today = dayjs();
@@ -54,7 +50,6 @@ export const Home = ({ userObj }) => {
       text: todo,
       createdAt: dayjs().format("YYYY-MM-DD HH:mm:ss"),
       creatorId: userObj.uid,
-      name: userObj.displayName,
       date: date.format("YYYY.MM.DD"),
       checked: Boolean(false),
     });
@@ -68,14 +63,17 @@ export const Home = ({ userObj }) => {
     setTodo(value);
   };
 
+  const onPanelChange = (value, mode) => {
+    console.log(value.format("YYYY-MM-DD"), mode);
+  };
+
   return (
     <div>
       <div className="w-full h-screen flex justify-center items-center ">
         <div className="w-80 flex flex-col">
+          {/* <p className="text-sm">🔻클릭하여 닉네임을 변경하세요!</p> */}
           <div className="mb-5 text-xl flex justify-between">
-            <span className="font-bold">
-              📆 {userObj.displayName}의 To Do List
-            </span>
+            <DisplayName userObj={userObj} todo={todo} />
             <button
               onClick={onLogOutClick}
               className="border border-1.5 border-[#364fc7] text-sm rounded-md px-2"
@@ -85,6 +83,7 @@ export const Home = ({ userObj }) => {
           </div>
           <div className="border rounded-sm bg-[#364fc7] ">
             <Date date={date} setDate={setDate} />
+
             <div className="p-2">
               <div className="h-[23rem] overflow-scroll scrollbar-hide">
                 {todos.map((todo) => {
