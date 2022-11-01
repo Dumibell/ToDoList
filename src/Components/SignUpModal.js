@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signOut,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { authService } from "../firebase";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,7 +29,6 @@ export const SignUpModal = ({ setModal }) => {
     if (password === passwordConfirm) {
       data = await createUserWithEmailAndPassword(authService, email, password);
       alert("회원가입에 성공하였습니다!");
-      signOut(getAuth());
       setModal(false);
     } else {
       alert("비밀번호를 확인해주세요.");
