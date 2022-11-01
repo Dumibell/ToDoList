@@ -21,10 +21,18 @@ function App() {
     });
   }, []);
 
+  const refreshUser = () => {
+    setUserObj(authService.currentUser);
+  };
+
   return (
     <div className="font-GangwonEdu">
       {init ? (
-        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
+        <AppRouter
+          isLoggedIn={Boolean(userObj)}
+          userObj={userObj}
+          refreshUser={refreshUser}
+        />
       ) : (
         "Initializing..."
       )}

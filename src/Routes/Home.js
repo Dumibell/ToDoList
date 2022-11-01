@@ -14,7 +14,7 @@ import { Date } from "../Components/Date";
 import dayjs from "dayjs";
 import { DisplayName } from "../Components/DisplayName";
 
-export const Home = ({ userObj }) => {
+export const Home = ({ userObj, refreshUser }) => {
   let today = dayjs();
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState("");
@@ -69,7 +69,11 @@ export const Home = ({ userObj }) => {
         <div className="w-80 flex flex-col">
           {/* <p className="text-sm">🔻클릭하여 닉네임을 변경하세요!</p> */}
           <div className="mb-5 text-xl flex justify-between">
-            <DisplayName userObj={userObj} todo={todo} />
+            <DisplayName
+              userObj={userObj}
+              todo={todo}
+              refreshUser={refreshUser}
+            />
             <button
               onClick={onLogOutClick}
               className="border border-1.5 border-[#364fc7] text-sm rounded-md px-2"
