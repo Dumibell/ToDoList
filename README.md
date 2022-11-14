@@ -29,10 +29,26 @@
 
 
 ## **4. 구현 기능**
-### 1. 로그인/회원가입 
-### 2. Todo List
-#### 1)이름 수정
-#### 2)todo 생성
-#### 3)todo 수정/삭제
-#### 4)todo 체크
+### 1. 회원가입/로그인
+  - Firebase Authentication 이용
+  - 라우터를 이용해 로그인이 되어있을 경우 메인 화면을, 로그인이 되어있지 않을 경우 로그인 화면을 띄우도록 구현.
+  
+#### 1) 회원가입
+  ![todo-signUp](https://user-images.githubusercontent.com/100185602/201638624-a4154ef6-ddd9-44ff-9826-5d05478e963d.gif)
+  
+ - password confirm input을 통해 입력한 두 개의 비밀번호가 다를 경우 빨간색 경고 문구 뜨게 구현.
+ - 회원가입을 하자마자 이름을 설정할 수 있도록 displayName이 없을 경우 "이름입력"이라는 문구가 bounce되도록 구현.
  
+
+#### 2) 로그인
+![todo-signIn](https://user-images.githubusercontent.com/100185602/201638670-c73b4576-95d1-4d59-a2ed-873b4d55d2b4.gif)
+
+- 입력한 정보로 가입된 계정이 없을 경우 "일치하는 회원정보가 없습니다"
+- Firebase에서 제공하는 google login 기능 추가
+
+<br/>
+
+### 2. Todo List
+#### 1) todo 생성
+![todo](https://user-images.githubusercontent.com/100185602/201640679-3599569b-f212-4c9f-a3b9-86d307f33fcc.gif)
+
