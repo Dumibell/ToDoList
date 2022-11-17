@@ -85,7 +85,6 @@ day.js 라이브러리를 사용해 날짜별로 투두를 생성하고 확인�
 
 ![todo-update](https://user-images.githubusercontent.com/100185602/201822476-6e41435d-cccd-43b5-8eff-93487498b6ff.gif)
 
-- 
 
 #### 3) todo 삭제
 ![todo-delete](https://user-images.githubusercontent.com/100185602/201822717-c05b0c2a-e3c5-4ac0-a7ba-77362a89c1ff.gif)
