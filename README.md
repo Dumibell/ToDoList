@@ -34,14 +34,17 @@
   - 라우터를 이용해 로그인이 되어있을 경우 메인 화면을, 로그인이 되어있지 않을 경우 로그인 화면을 띄우도록 구현.
   
 #### 1) 회원가입
-  ![todo-signUp](https://user-images.githubusercontent.com/100185602/201638624-a4154ef6-ddd9-44ff-9826-5d05478e963d.gif)
+
+![todo-signup](https://user-images.githubusercontent.com/100185602/201822396-da3aa70a-f6f6-4b42-ab4f-1cc214d70c6e.gif)
   
  - password confirm input을 통해 입력한 두 개의 비밀번호가 다를 경우 빨간색 경고 문구 뜨게 구현.
- - 회원가입을 하자마자 이름을 설정할 수 있도록 displayName이 없을 경우 "이름입력"이라는 문구가 bounce되도록 구현.
+ - 회원가입을 하자마자 이름을 설정할 수 있도록 displayName이 없을 경우 "이름입력"이라는 문구에 bounce 효과를 줌.
  
 
 #### 2) 로그인
-![todo-signIn](https://user-images.githubusercontent.com/100185602/201638670-c73b4576-95d1-4d59-a2ed-873b4d55d2b4.gif)
+
+![todo-signin](https://user-images.githubusercontent.com/100185602/201822424-bbb57ab7-88a2-4700-901e-64c8bd334410.gif)
+
 
 - 입력한 정보로 가입된 계정이 없을 경우 "일치하는 회원정보가 없습니다"
 - Firebase에서 제공하는 google login 기능 추가
@@ -49,6 +52,40 @@
 <br/>
 
 ### 2. Todo List
-#### 1) todo 생성
-![todo](https://user-images.githubusercontent.com/100185602/201640679-3599569b-f212-4c9f-a3b9-86d307f33fcc.gif)
 
+![todo-date](https://user-images.githubusercontent.com/100185602/201822519-894da067-a808-4603-aded-72e930aa8aa2.gif)
+
+
+day.js 라이브러리를 사용해 날짜별로 투두를 생성하고 확인할 수 있도록 구현했습니다. (리드미 작성 날짜: 2022/11/15)
+- 처음 로그인시 현재 날짜의 투두리스트가 보여짐.
+- 화살표 버튼을 통해 이전/다음 날짜로 이동 가능.
+<br/>
+
+#### 1) todo 생성
+
+![todo-create](https://user-images.githubusercontent.com/100185602/201822445-e54639b5-106d-48f0-8e24-8e41f9ce0ef1.gif)
+
+⬇️ todo 생성시 저장되는 db구조
+
+```js
+    await addDoc(collection(dbService, userObj.uid), {
+      text: todo,
+      createdAt: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+      creatorId: userObj.uid,
+      date: date.format("YYYY.MM.DD"),
+      checked: Boolean(false),
+    });
+  ```
+  <br/>
+  
+  - date state는 날짜를 변경할 때마다 값이 변경되도록 만들어 todo를 생성할 때 같이 db에 저장되도록 함.
+  - checked는 처음에 false로 생성하고, 이후 사용자가 체크박스를 클릭할 때 true로 업데이트 되도록 구현.
+
+#### 2) todo 수정
+
+![todo-update](https://user-images.githubusercontent.com/100185602/201822476-6e41435d-cccd-43b5-8eff-93487498b6ff.gif)
+
+- 
+
+#### 3) todo 삭제
+![todo-delete](https://user-images.githubusercontent.com/100185602/201822717-c05b0c2a-e3c5-4ac0-a7ba-77362a89c1ff.gif)
