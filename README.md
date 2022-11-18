@@ -55,10 +55,31 @@
 
 ![todo-date](https://user-images.githubusercontent.com/100185602/201822519-894da067-a808-4603-aded-72e930aa8aa2.gif)
 
-
 day.js 라이브러리를 사용해 날짜별로 투두를 생성하고 확인할 수 있도록 구현했습니다. (리드미 작성 날짜: 2022/11/15)
 - 처음 로그인시 현재 날짜의 투두리스트가 보여짐.
 - 화살표 버튼을 통해 이전/다음 날짜로 이동 가능.
+
+<br/>
+
+
+```js
+useEffect(() => {
+    const q = query(
+      collection(dbService, userObj.uid),
+      orderBy("createdAt", "desc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const todoArr = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTodos(todoArr);
+      console.log(todoArr);
+    });
+  }, []);
+```
+데이터 리드시 로그인 한 사용자의 uid인 collection을 불러와 state에 담아주었습니다. 사용자별로 개별 todo list를 갖게 됩니다.
+
 <br/>
 
 #### 1) todo 생성
@@ -78,6 +99,7 @@ day.js 라이브러리를 사용해 날짜별로 투두를 생성하고 확인�
   ```
   <br/>
   
+  - todo 생성시 collection이름이 user의 uid로 생성되도록 구현 
   - date state는 날짜를 변경할 때마다 값이 변경되도록 만들어 todo를 생성할 때 같이 db에 저장되도록 함.
   - checked는 처음에 false로 생성하고, 이후 사용자가 체크박스를 클릭할 때 true로 업데이트 되도록 구현.
 
